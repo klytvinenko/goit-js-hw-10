@@ -8,7 +8,9 @@ function fetchBreeds() {
     .then(response => {
        return response.data;
     })
-    .catch(err => console.log(err));
+    .catch(() => {
+        Report.failure('Oops!', 'Something went wrong! Try reloading the page!');
+    });
 }
 
 function fetchCatByBreed(breedId) {
@@ -17,7 +19,9 @@ function fetchCatByBreed(breedId) {
     .then(response => { 
         return response.data[0];
     })
-    .catch(err => console.log(err));
+    .catch(() => {
+        Report.failure('Oops!', 'Something went wrong! Try reloading the page!');
+    });
 }
 
 
