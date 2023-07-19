@@ -6,24 +6,18 @@ function fetchBreeds() {
     return axios
     .get(`breeds/`)
     .then(response => {
-        if(response.status !== 200) {
-            throw new Error(response.status);
-        }
-        response.data();
+       return response.data;
     })
-    .catch(error => console.error(error));
+    .catch(err => console.log(err));
 }
 
 function fetchCatByBreed(breedId) {
     return axios 
     .get(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
-    .then(response => {
-        if(response.status!== 200) {
-            throw new Error(response.status);
-        }
-        response.data[0];
+    .then(response => { 
+        return response.data[0];
     })
-    .catch(error => console.error(error));
+    .catch(err => console.log(err));
 }
 
 
