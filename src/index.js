@@ -20,7 +20,6 @@ fetchBreeds().then(data => {
 breedSelect.addEventListener('change', onSelect);
 
 function onSelect(evt) {
-    breedSelect.classList.add('hidden');
      catInfo.classList.add('hidden');
 
     loader.classList.remove('js-hidden');
@@ -32,7 +31,6 @@ function onSelect(evt) {
     fetchCatByBreed(selectId).then(cat => {
         loader.classList.add('js-hidden');
         Loading.remove();
-        breedSelect.classList.remove('hidden');
         catInfo.classList.remove('hidden');
         const markup = `
         <img src="${cat.url}" alt="${cat.id} width="200" height="200">
