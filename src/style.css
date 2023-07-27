@@ -1,3 +1,14 @@
 .js-hidden {
     display: none;
 }
+
+.js-hidden-error {
+    display: none;
+}
+
+.js-select-hidden {
+    display: none;
+}
+.hidden {
+    display: none;
+}

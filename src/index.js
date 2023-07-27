@@ -19,12 +19,15 @@ fetchBreeds().then(data => {
 breedSelect.addEventListener('change', onSelect);
 
 function onSelect(evt) {
+     catInfo.classList.add("hidden");
     Loading.standard('Loading data, please wait...');
+
     evt.preventDefault();
     const selectId = breedSelect.value;
 
     fetchCatByBreed(selectId).then(cat => {
         Loading.remove();
+        catInfo.classList.remove("hidden")
         const markup = `
         <img src="${cat.url}" alt="${cat.id} width="200" height="200">
         <h2>${cat.breeds[0].name}</h2>
