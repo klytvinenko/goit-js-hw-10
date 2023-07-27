@@ -4,6 +4,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const breedSelect = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
+const loader = document.querySelector('.loader');
 
 fetchBreeds().then(data => {
     const option = data.map(({id, name}) => {
@@ -21,12 +22,15 @@ breedSelect.addEventListener('change', onSelect);
 function onSelect(evt) {
     breedSelect.classList.add('hidden');
      catInfo.classList.add('hidden');
+
+    loader.classList.remove('js-hidden');
     Loading.standard('Loading data, please wait...');
 
     evt.preventDefault();
     const selectId = breedSelect.value;
 
     fetchCatByBreed(selectId).then(cat => {
+        loader.classList.add('js-hidden');
         Loading.remove();
         breedSelect.classList.remove('hidden');
         catInfo.classList.remove('hidden');
