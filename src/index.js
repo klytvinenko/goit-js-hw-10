@@ -6,6 +6,9 @@ const breedSelect = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 
+breedSelect.classList.add('js-select-hidden');
+loader.classList.remove('js-hidden');
+
 fetchBreeds().then(data => {
     const option = data.map(({id, name}) => {
         return `<option value="${id}">${name}</option>`
@@ -15,6 +18,10 @@ fetchBreeds().then(data => {
 })
 .catch(() => {
     Report.failure('Oops!', 'Something went wrong! Try reloading the page!');
+})
+.finally(() => {
+    breedSelect.classList.remove('js-select-hidden');
+    loader.classList.add('js-hidden');    
 });
 
 breedSelect.addEventListener('change', onSelect);
